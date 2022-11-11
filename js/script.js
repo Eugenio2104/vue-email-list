@@ -11,16 +11,19 @@ const { createApp } = Vue;
 
 //console.log(axios);
 
-createApp({
 
+createApp({
+  
   data(){
     return{
-      title: 'email'
+      title: 'email',
+      listaMail: ''
     }
   },
   mounted(){
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail'.then( risultato =>{
-      console.log(risultato);
-    }))
-  }
-}).mount('#app')
+    axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then( risultato => {
+      console.log(risultato.data);
+      this.listaMail = risultato.data.response
+    })
+  },
+}).mount('#app');
